@@ -52,7 +52,7 @@ This cargo project contains the ported utils.c code. To compile and generate the
 /cargo.toml specifies the dependencies and instruction to compile it as a dynamic library
 
 ### rust_queue_check
-[@Ashman]
+This code implements the queue data structure used by microps. The complete code can be found in [/code_orig/rust_queue_check](https://github.com/kumarakrishna/c-rust-integration/tree/b8399755340f3f7c0f6719241fc7e58cd10f9a64/code_orig/rust_queue_check). The basic idea is to absract all the data intensive queue operations in rust and give c code only the permisiion to handle pointers. This code implements basic push, pop and peek functions which can be found [here](https://github.com/kumarakrishna/c-rust-integration/blob/b8399755340f3f7c0f6719241fc7e58cd10f9a64/code_orig/rust_queue_check/rust_code/src/utillib/mod.rs)
 
 ### microps_integration
 The dependency of icmp.c on utils.c has been replaced with utils_rust. The rust code was compiled into a dynamic shared library as explain in utils_rust. The file rust_functions.h contains extern definitions of rust functions, which are imported in icmp.c. 'rust_functions.c' is included in icmp.c and the makefile was edited to link the rust library. Makefile was updated to link the rust library during compilation of icmp.c.
@@ -303,6 +303,9 @@ Porting C code to Rust project needs multiple modifications to lifetimes of vari
 "Massif" is another tool in the Valgrind suite, specifically designed for heap profiling in C and C++ programs. It helps benchmark and optimize memory usage by providing a detailed analysis of heap allocations and deallocations. Massif aids developers in identifying memory-related bottlenecks, allowing for targeted optimizations to improve overall program efficiency.
 
 - [@Joel]:Pics
+
+### Callgrind
+"Callgrind" is a profiling tool within the Valgrind suite, focused on call-graph profiling for C and C++ programs. It helps benchmark and optimize code by providing insights into function call relationships, execution times, and cache usage. Callgrind assists developers in identifying performance bottlenecks, facilitating targeted improvements for more efficient and optimized program execution.
 
 ## Future Work
 
