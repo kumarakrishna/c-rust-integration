@@ -239,4 +239,9 @@ Porting C code to Rust project needs multiple modifications to lifetimes of vari
 
 ## Future Work
 
-- 
+- Port more files to Rust and becnhmark changes with incremental increase in percentage of Rust in codebase.
+- Provide a general framework to identify functions and files to port to Rust.
+- Provide various approaches to integration of Rust into a C/C++ codebase.
+- Provide conditional memory safety guarantees for Rust integrations and provide documentation on the same.
+- Explore and document integration challeneges and ABI compatibility issues. Provide solutions for the same.
+- Conduct a similar study with different languages, and provide a general framework to identify the suitablility of languages for a given task.
