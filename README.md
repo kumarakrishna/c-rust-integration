@@ -176,6 +176,52 @@ The build file can be found in [/ccode/build.sh](https://github.com/kumarakrishn
 
 
 ## POPL Aspects
+Here are some Principles of Programming language-specific aspects present in the code, along with their corresponding line numbers:
+
+1. Ownership and Borrow Checker:
+   - Line 11: `let mut file = unsafe { File::from_raw_fd(fileno(fp)) };`
+   - Line 19: `let data_slice = unsafe { std::slice::from_raw_parts(data, len) };`
+   - Line 48: `let mut file = unsafe { File::from_raw_fd(fileno(fp)) };`
+   - Line 49: `write!(&mut file, "+------+-------------------------------------------------+------------------+\n").unwrap();`
+   - Line 57: `write!(&mut file, "| {:04x} | ", offset).unwrap();`
+   - Lines 64-78: Usage of `&mut file` throughout the function.
+
+2. Type Safety:
+   - Line 11: `let mut file: File = unsafe { File::from_raw_fd(fileno(fp)) };`
+   - Line 19: `let data_slice: &[u8] = unsafe { std::slice::from_raw_parts(data, len) };`
+   - Lines 59, 66, 74: Usage of `data_slice[offset + index] as char`.
+
+3. Ownership Transfer (Move Semantics):
+   - Line 16: `let mut file = unsafe { File::from_raw_fd(fileno(fp)) };`
+   - Line 30: `let mut addr = addr;`
+
+4. Static Mutability:
+   - Line 28: `static mut ENDIAN: i32 = 0;`
+
+5. Enums and Pattern Matching:
+   - Line 57: `for index in 0..16 { ... }` - Iterating with a pattern matching loop.
+
+6. Lifetimes:
+   - Line 83: `fn foreach<F>(&mut self, mut func: F) where F: FnMut(&mut T),`
+
+7. Struct Generics and PhantomData:
+   - Lines 92-97: `struct QueueEntry<T> { ... }`
+   - Lines 99-106: `struct Queue<T> { ... }`
+   - Line 108: `fn new(data: T) -> Self { ... }`
+   - Line 123: `fn push(&mut self, data: QueueEntry<T>) { ... }`
+   - Line 127: `fn peek(&self) -> Option<&T> { ... }`
+
+8. Error Handling:
+   - Line 111: `LITTLE_ENDIAN.try_into().unwrap()`
+   - Line 114: `BIG_ENDIAN.try_into().unwrap()`
+
+9. Unwrapping Results and Option:
+   - Line 49: `write!(&mut file, "+------+-------------------------------------------------+------------------+\n").unwrap();`
+   - Line 111: `LITTLE_ENDIAN.try_into().unwrap()`
+   - Line 114: `BIG_ENDIAN.try_into().unwrap()`
+   - Line 121: `self.queue.front().map(|entry| &entry.data)`
+
+These aspects highlight some of the unique features and characteristics of Rust compared to C, allowing Rust to be a safer language.
 
 ## Issues Faced
 
