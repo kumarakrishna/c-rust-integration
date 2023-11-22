@@ -293,8 +293,6 @@ Porting C code to Rust project needs multiple modifications to lifetimes of vari
  
 ## Tests and Benchmarking
 
-## Tests and Benchmarking
-
 ### Perf
 "perf" in Linux is a powerful performance analysis tool that helps benchmark and optimize system and application performance. It provides insights into CPU usage, memory operations, and other critical metrics, enabling developers to identify bottlenecks and improve overall system efficiency. With features like profiling and tracing, "perf" is instrumental in fine-tuning software for optimal execution.
 @Joel
