@@ -44,3 +44,12 @@ extern int
 icmp_init(void);
 
 #endif
+
+//for ntoh16
+extern uint16_t ntoh16_rust(uint16_t n);
+//for ntoh32
+extern uint32_t ntoh32_rust(uint32_t n);
+//for cksum16
+extern uint16_t cksum16_rust(uint16_t *data, size_t len, int sum);
+//for hexdump
+extern void hexdump_rust(FILE *fp, const uint8_t *data, size_t len);

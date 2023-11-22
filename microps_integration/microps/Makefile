@@ -2,6 +2,7 @@ APPS = app/udpc.exe \
        app/udps.exe \
        app/tcpc.exe \
        app/tcps.exe \
+       app/icmp.exe \
 
 TESTS = test/test.exe \
 
@@ -17,6 +18,8 @@ OBJS = util.o \
        udp.o \
        tcp.o \
        sock.o \
+
+RUST_LIB = microps_integration/utils_rust/target/release/libutillib.dylib
 
 CFLAGS := $(CFLAGS) -g -W -Wall -Wno-unused-parameter -iquote .
 
@@ -42,6 +45,9 @@ all: $(APPS) $(TESTS)
 $(APPS): %.exe : %.o $(OBJS) $(DRIVERS)
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
+app/icmp.exe: app/icmp.o $(OBJS) $(DRIVERS) $(RUST_LIB)
+	$(CC) $(CFLAGS) -o $@ $< $(OBJS) $(DRIVERS) $(RUST_LIB) $(LDFLAGS)
+
 $(TESTS): %.exe : %.o $(OBJS) $(DRIVERS) test/test.h
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
@@ -49,4 +55,4 @@ $(TESTS): %.exe : %.o $(OBJS) $(DRIVERS) test/test.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(APPS) $(APPS:.exe=.o) $(OBJS) $(DRIVERS) $(TESTS) $(TESTS:.exe=.o)
+	rm -rf $(APPS) $(APPS:.exe=.o) $(OBJS) $(DRIVERS) $(TESTS) $(TESTS:.exe=.o) app/icmp.exe app/icmp.o

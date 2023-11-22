@@ -5,7 +5,7 @@
 #include <sys/types.h>
 #include <errno.h>
 
-#include "platform.h"
+#include "platform/linux/platform.h"
 
 #include "util.h"
 #include "net.h"
