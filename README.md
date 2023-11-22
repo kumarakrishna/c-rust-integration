@@ -179,32 +179,38 @@ The build file can be found in [/ccode/build.sh](https://github.com/kumarakrishn
 Here are some Principles of Programming language-specific aspects present in the code, along with their corresponding line numbers:
 
 1. Ownership and Borrow Checker:
-   - Line 11: `let mut file = unsafe { File::from_raw_fd(fileno(fp)) };`
-   - Line 19: `let data_slice = unsafe { std::slice::from_raw_parts(data, len) };`
-   - Line 48: `let mut file = unsafe { File::from_raw_fd(fileno(fp)) };`
+  Rust's ownership system ensures memory safety by tracking resource ownership and preventing data races through strict borrowing rules.
+   - Line 19: `let mut file = unsafe { File::from_raw_fd(fileno(fp)) };`
+   - Line 16: `let data_slice = unsafe { std::slice::from_raw_parts(data, len) };`
    - Line 49: `write!(&mut file, "+------+-------------------------------------------------+------------------+\n").unwrap();`
    - Line 57: `write!(&mut file, "| {:04x} | ", offset).unwrap();`
    - Lines 64-78: Usage of `&mut file` throughout the function.
 
 2. Type Safety:
+   Rust's strong static typing helps catch type-related errors at compile-time, reducing runtime errors and enhancing code reliability.   
    - Line 11: `let mut file: File = unsafe { File::from_raw_fd(fileno(fp)) };`
    - Line 19: `let data_slice: &[u8] = unsafe { std::slice::from_raw_parts(data, len) };`
    - Lines 59, 66, 74: Usage of `data_slice[offset + index] as char`.
 
 3. Ownership Transfer (Move Semantics):
+   Rust's move semantics prevent accidental data aliasing and enable efficient memory management by transferring ownership instead of copying data.
    - Line 16: `let mut file = unsafe { File::from_raw_fd(fileno(fp)) };`
    - Line 30: `let mut addr = addr;`
 
 4. Static Mutability:
+   Rust's static mut allows controlled mutable access to global state, maintaining safety by ensuring exclusive access through unsafe blocks.
    - Line 28: `static mut ENDIAN: i32 = 0;`
 
 5. Enums and Pattern Matching:
+    Rust's enums and pattern matching facilitate expressive and exhaustive handling of different states, reducing the likelihood of handling unexpected cases.
    - Line 57: `for index in 0..16 { ... }` - Iterating with a pattern matching loop.
 
 6. Lifetimes:
+    Lifetimes in Rust enable precise control over references, preventing dangling references and ensuring that borrowed data remains valid throughout its usage   
    - Line 83: `fn foreach<F>(&mut self, mut func: F) where F: FnMut(&mut T),`
 
 7. Struct Generics and PhantomData:
+   Rust's use of generics in structs allows for flexible and reusable data structures, and PhantomData helps express type variance without affecting runtime behavior.
    - Lines 92-97: `struct QueueEntry<T> { ... }`
    - Lines 99-106: `struct Queue<T> { ... }`
    - Line 108: `fn new(data: T) -> Self { ... }`
@@ -212,10 +218,12 @@ Here are some Principles of Programming language-specific aspects present in the
    - Line 127: `fn peek(&self) -> Option<&T> { ... }`
 
 8. Error Handling:
+   Rust's Result and Option types, along with the try_into method, promote explicit and structured error handling, enhancing code clarity and reliability.
    - Line 111: `LITTLE_ENDIAN.try_into().unwrap()`
    - Line 114: `BIG_ENDIAN.try_into().unwrap()`
 
 9. Unwrapping Results and Option:
+    The use of unwrap in Rust signifies explicit handling of success and failure cases, encouraging developers to consider and handle potential errors, contributing to safer code.
    - Line 49: `write!(&mut file, "+------+-------------------------------------------------+------------------+\n").unwrap();`
    - Line 111: `LITTLE_ENDIAN.try_into().unwrap()`
    - Line 114: `BIG_ENDIAN.try_into().unwrap()`
