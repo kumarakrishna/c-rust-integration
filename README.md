@@ -173,6 +173,74 @@ The build file can be found in [/ccode/build.sh](https://github.com/kumarakrishn
 
 ## Issues Faced
 
+### 1. Conversion to different appropriate data types
+Data types in Rust are more expressive and safe as compared to C data types, allowing the user to have greater control over the boundaries of what each variable, function or traits can hold or access. Rust has a much stronger type system, with more data types available than those in C code.This means the selection of the data type is a critical factor to keep in mind while porting code from C to Rust. 
+ 
+Selecting improper data types initially led to a domino effect of errors across multiple file levels where each function calls another one and uses its result according to its type signature. Correcting these was possible after a more in depth study about rust, its data types, what it signifies and where its use cases primarily are 
+ 
+Line number 12 : using usize as a data type for the return type io::Result<usize> gives a compile time error.
+
+### 2. Manipulating raw pointers, converting them to appropriate pointer types in Rust to utilize the Rust paradigm of ownership and borrowchecker to the fullest
+Data is passed from Rus### 1. Uninitialized variables
+C let's the programmer compile code with uninitialized variables. It also lets uninitialized variables be passed as arguments to function calls, which can lead to null pointers or segmentation fault if the programmer is not careful
+ 
+Rust does not allow the programmer to pass uninitialized variables as function calls, in Rust code as well over the foreign function interface, making the ported code safer with fewer chances of bugs and/or errors
+ 
+### 2. Segmentation fault
+In C it is possible to access out of bounds indexes when using FFIs. RUST has compile time checks to prevent this from happening.  
+ 
+When we declare an array of size n in C and try to access the n+1th index in RUST code which ideally should give a compile time error. But there is no compile time check and RUST accesses the memory location which results in runtime errors.
+When we declare an array of size n in RUST and try to access the n+1th index in C code which ideally should give a compile time error. But there is no compile time check and C accesses the memory location which results in runtime errorst to C using raw pointers which then need to be converted to data types in the Rust codebase to be used as variables. Rust provides multiple types of pointers, few common ones being
+- Box<T>
+- Rc<T>
+- Arc<T>
+- Cell<T>
+- RefCell<T>
+ 
+Each being suitable for a certain kind of operation. For example, Rc<T> is primarily used when we want shared access to variables where as Cell<T> is primarily used to provide interior mutability access. Each has a different use case and careful thought has to go into using the appropriate pointer type otherwise the code can get extremely clumsly and proceeding further becomes a mammoth challenge.
+
+### 3. Finding appropriate crates to replicate the C libraries
+Libraries in C are a colection of pre-compiled code that provide functions and data types to be used by the programmer, they can be static or dynamic depending on when they are linked and loaded into the memory. Crates in rust are also pre-code compiled code which can be used by the programmer, they can be 'binary' which can be executed directly or 'library' crates which are used as dependencies as other crates
+ 
+Finding the appropriate crates for our project to replicate the functionalities of the libraries used in the original Microps codebase was a time consuming process where we had to try out multiple crates from https://crates.io/ website before arriving on a crate which we deemed suitable
+ 
+Line number 1-8 of microps_integration/utils_rust/src/utillib/mod.rs : appropriate crates found to replicate the functionality of libraries
+
+### 4. Integrating codebases using the makefile
+Integrating the newly written Rust code with the existing C code requires multiple steps. 
+1. Compiling the rust code to create using "cargo build" to create a binary
+2. Locating where the binary is stored
+3. Adding the binary to the correct C files using the "#include<>" statement
+4. Modifying the makefile to incorporate the rust code file
+5. Compiling the C code which now contains the Rust FFI
+ 
+Major issues in locating and including the build file into C code. The build file needs changes after the "cargo build" step in order to fully merge with the C. identification and solving of this issue was a major issue when integrating codebases
+ 
+Writing the correct makefile, integrating C and Rust code at correct locations with all needed dependencies was an issue that the team faced as well. 
+
+## Other possible intergation issues
+
+### 1. Uninitialized variables
+C let's the programmer compile code with uninitialized variables. It also lets uninitialized variables be passed as arguments to function calls, which can lead to null pointers or segmentation fault if the programmer is not careful
+ 
+Rust does not allow the programmer to pass uninitialized variables as function calls, in Rust code as well over the foreign function interface, making the ported code safer with fewer chances of bugs and/or errors
+ 
+### 2. Segmentation fault
+In C it is possible to access out of bounds indexes when using FFIs. RUST has compile time checks to prevent this from happening.  
+ 
+When we declare an array of size n in C and try to access the n+1th index in RUST code which ideally should give a compile time error. But there is no compile time check and RUST accesses the memory location which results in runtime errors.
+When we declare an array of size n in RUST and try to access the n+1th index in C code which ideally should give a compile time error. But there is no compile time check and C accesses the memory location which results in runtime errors
+
+### 3. Overflow error
+In C integer overflow errors commonly result in runtime errors. RUST has compile time checks in place to prevent this, making the code safer and error-free while improving runtime performance
+ 
+We initialized an integer as INT_MAX in C before passing it to RUST and adding one to it and printed the values in RUST code. This leads to a compile time error, due to RUST safety principles.
+ 
+We initialized an integer as INT_MAX in RUST before passing it to C and added one to it and printed the values in C code. This results in overflow.
+
+### 4. Scope and lifetime of data structures passed between boundaries using an FFI
+Porting C code to Rust project needs multiple modifications to lifetimes of variable, function signatures, etc to fully utilise the Rust model. Lifetimes are assigned after careful checks, making sure that variables and functions outside the scope are not able to access these data structures. 
+ 
 ## Tests and Benchmarking
 
 - [@Joel]: Mention any relevant information about tests and benchmarking here.
