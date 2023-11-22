@@ -40,3 +40,14 @@ Rust employs several mechanisms to prevent overflow, underflow, and segmentation
 - **Lifetime checks:** Rust's compiler enforces lifetime rules, which specify the validity period of references. This prevents the use of references after their corresponding objects have been destroyed, eliminating the possibility of accessing invalid memory and segmentation faults.
 - **Bounds checking:** Rust automatically performs bounds checking on arrays, preventing index out of bounds errors and segmentation faults.
 - **Safe data types:** Rust provides safe data types, such as `Vec` and `String`, which manage memory allocation and deallocation automatically. This eliminates the need for manual memory management and reduces the risk of memory-related errors.
+
+# Handling Errors Explicitly Using `Ok()` and `Err()` to Prevent Unwanted Compile-Time Errors
+
+## Explicit Error Handling with Result Type
+
+The `Result` type in Rust is a powerful mechanism for representing either a successful outcome or an error. It encapsulates either an `Ok` value, indicating a successful result, or an `Err` value, indicating an error. This explicit representation of errors encourages developers to handle potential failures proactively.
+
+## Preventing Unwanted Compile-Time Errors
+
+Rust's type system enforces error handling by requiring developers to explicitly handle both successful and error cases when working with the `Result` type. This prevents unwanted compile-time errors that could arise from ignoring potential failures.
+
