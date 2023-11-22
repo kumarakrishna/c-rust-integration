@@ -1,5 +1,13 @@
 # c-rust-integration
 
+**Group No. 1**
+
+## Members
+- Arnav Gupta (2021A7PS2092G)
+- Ashman Mehra (2021A7PS2508G)
+- Kumarakrishna Valeti (2021A7PS2617G)
+- Joel Tony (2021A7PS2077G)
+
 ## Problem Statement
 
 We aim to explore conditional memory safety guarantees and performance impacts of integrating Rust code into a C codebase. While Rust's memory safety guarantees are well-documented, it's often impractical to port entire codebases to Rust. Existing studies typically compare complete Rust-based codebases with complete C-based ones, which may not reflect real-world scenarios for legacy codebases. Documentation on Rust and C integration approaches is sparse, and roadblocks and solutions are not well-documented. Our goal is to study integration approaches that provide maximum memory safety guarantees and performance improvements.
@@ -19,6 +27,22 @@ We chose Microps as a case study—a GitHub project offering an educational impl
 - `utils.c`: Utility functions, including a queue data structure and file/data handling.
 
 We ported `utils.c` to Rust with a focus on providing conditional memory safety guarantees by managing memory allocation and access in Rust.
+
+## Repo Structure
+
+- `/doc`: Milestone 1 ppt, project proposal, README, Errors_avoided.pdf.
+- `/tests`: Test cases.
+- `/code_orig`: utils_rust cargo project , rust_functions.h, rust_queue_check
+- `/code-external`: Original Microps code.
+- `/results`: Benchmarking results.
+
+## Distribution of Tasks
+
+- Porting of utils.c to Rust - Ashman Mehra, Kumarakrishna Valeti, Arnav Gupta
+- Identification of errors avoided - Arnav Gupta
+- Integration of utils_rust with microps_icmp - Kumarakrishna Valeti
+- Integration of Queue with test C code - Ashman Mehra
+- Benchmarking and testing - Joel Tony
 
 ## RUST and C Integration Pipeline
 This section explains the complete end-to-end integration pipelin of rust into c modules using FFI safe practices. This section eplains the complete procedure using the integration example in [`integration/integration_examples`](https://github.com/kumarakrishna/c-rust-integration/tree/c6fd00c157ab592c559dd5928c5a0c4b86febbbd/code_orig/integration_examples)
@@ -133,14 +157,6 @@ The build file can be found in [/ccode/build.sh](https://github.com/kumarakrishn
 
 - [@Joel]: Mention any relevant information about tests and benchmarking here.
 
-## Repo Structure
-
-- `/doc`: Milestone 1 ppt, project proposal, README.
-- `/tests`: Test cases.
-- `/code_orig`: Original Rust code (`lib.rs`), dummy code with queue integration, `/integration` (modified ICMP and Makefile inside), `/integration_examples`.
-- `/code-external`: Original Microps code.
-- `/results`: Benchmarking results.
-- `/identified_errors`: Documented errors.
 
 ## Future Work
 
