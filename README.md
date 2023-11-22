@@ -181,7 +181,8 @@ Selecting improper data types initially led to a domino effect of errors across 
 Line number 12 : using usize as a data type for the return type io::Result<usize> gives a compile time error.
 
 ### 2. Manipulating raw pointers, converting them to appropriate pointer types in Rust to utilize the Rust paradigm of ownership and borrowchecker to the fullest
-Data is passed from Rus### 1. Uninitialized variables
+Data is passed from Rust.
+### 1. Uninitialized variables
 C let's the programmer compile code with uninitialized variables. It also lets uninitialized variables be passed as arguments to function calls, which can lead to null pointers or segmentation fault if the programmer is not careful
  
 Rust does not allow the programmer to pass uninitialized variables as function calls, in Rust code as well over the foreign function interface, making the ported code safer with fewer chances of bugs and/or errors
