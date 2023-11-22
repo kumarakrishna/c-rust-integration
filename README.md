@@ -44,7 +44,7 @@ We ported `utils.c` to Rust with a focus on providing conditional memory safety 
 - Integration of utils_rust with microps_icmp - Kumarakrishna Valeti
 - Integration of Queue with test C code - Ashman Mehra
 - Benchmarking and testing - Joel Tony
-- README - Kumarakrishna Valeti, Ashman Mehra, Joel Tony
+- README - Kumarakrishna Valeti, Ashman Mehra, Arnav Gupta
 
 ### utils_rust
 This cargo project contains the ported utils.c code. To compile and generate the dynamic shared library run 'cargo build --release' in root of utils_rust. The share library should be generated as libutillib.dylib **on mac** (.so on linux) under target/release.
@@ -57,7 +57,7 @@ This cargo project contains the ported utils.c code. To compile and generate the
 ### microps_integration
 The dependency of icmp.c on utils.c has been replaced with utils_rust. The rust code was compiled into a dynamic shared library as explain in utils_rust. The file rust_functions.h contains extern definitions of rust functions, which are imported in icmp.c. 'rust_functions.c' is included in icmp.c and the makefile was edited to link the rust library. Makefile was updated to link the rust library during compilation of icmp.c.
 
-shared library in linux has a .so extension and .dylib extension on mac. For running on linux/mac check the extension sign in Makefile for Rust_library.
+**shared library in linux has a .so extension and .dylib extension on mac. For running on linux/mac check the extension sign in Makefile for Rust_library.**
 
 ## RUST and C Integration Pipeline
 This section explains the complete end-to-end integration pipelin of rust into c modules using FFI safe practices. This section eplains the complete procedure using the integration example in [`integration/integration_examples`](https://github.com/kumarakrishna/c-rust-integration/tree/c6fd00c157ab592c559dd5928c5a0c4b86febbbd/code_orig/integration_examples)
@@ -180,4 +180,4 @@ The build file can be found in [/ccode/build.sh](https://github.com/kumarakrishn
 
 ## Future Work
 
-- [List any planned future work or improvements]
+- 
