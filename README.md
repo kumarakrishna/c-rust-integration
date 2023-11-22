@@ -32,7 +32,7 @@ We ported `utils.c` to Rust with a focus on providing conditional memory safety 
 
 - `/code-external`: Original Microps code
 - `/code_orig`: utils_rust, rust_functions.h, rust_queue_check, integration_examples
-- `/doc`: Milestone 1 ppt, project proposal, README, Errors_avoided.txt.
+- `/doc`: Milestone 1 ppt, project proposal, README, Errors_avoided.pdf.
 - `/tests`: Test cases.
 - `/results`: Benchmarking results
 - `/microps_integration`: microps_integrated, utils_rust
@@ -61,6 +61,9 @@ The dependency of icmp.c on utils.c has been replaced with utils_rust. The rust 
 
 ### integration_examples
 Contains an example integration of Rust into C code. Explained in detail below.
+
+### Errors_avoided.pdf
+Contains errors avoided by porting to Rust. Listed in the document Errors_avoided.pdf under docs.
 
 ## RUST and C Integration Pipeline
 This section explains the complete end-to-end integration pipelin of rust into c modules using FFI safe practices. This section eplains the complete procedure using the integration example in [`integration/integration_examples`](https://github.com/kumarakrishna/c-rust-integration/tree/c6fd00c157ab592c559dd5928c5a0c4b86febbbd/code_orig/integration_examples)
