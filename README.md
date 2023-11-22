@@ -47,15 +47,15 @@ We ported `utils.c` to Rust with a focus on providing conditional memory safety 
 - README - Kumarakrishna Valeti, Ashman Mehra, Joel Tony
 
 ### utils_rust
-This cargo project contains the ported utils.c code. To compile and generate the dynamic shared library run 'cargo build --release' in root of utils_rust. The share library should be generated as libutillib.dylib on mac under target/release.
+This cargo project contains the ported utils.c code. To compile and generate the dynamic shared library run 'cargo build --release' in root of utils_rust. The share library should be generated as libutillib.dylib **on mac** under target/release.
 /src/utillib/mod.rs contains the ported utils.c code
 /cargo.toml specifies the dependencies and instruction to compile it as a dynamic library
 
 ### rust_queue_check
-
+[@Ashman]
 
 ### microps_integration
-
+The dependency of icmp.c on utils.c has been replaced with utils_rust. The rust code was compiled into a dynamic shared library as explain in utils_rust. The file rust_functions.h contains extern definitions of rust functions, which are imported in icmp.c. 'rust_functions.c' is included in icmp.c and the makefile was edited to link the rust library.  
 
 ## RUST and C Integration Pipeline
 This section explains the complete end-to-end integration pipelin of rust into c modules using FFI safe practices. This section eplains the complete procedure using the integration example in [`integration/integration_examples`](https://github.com/kumarakrishna/c-rust-integration/tree/c6fd00c157ab592c559dd5928c5a0c4b86febbbd/code_orig/integration_examples)
