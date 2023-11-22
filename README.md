@@ -31,7 +31,7 @@ We ported `utils.c` to Rust with a focus on providing conditional memory safety 
 ### Repo Structure
 
 - `/code-external`: Original Microps code
-- `/code_orig`: utils_rust, rust_functions.h, rust_queue_check
+- `/code_orig`: utils_rust, rust_functions.h, rust_queue_check, integration_examples
 - `/doc`: Milestone 1 ppt, project proposal, README, Errors_avoided.txt.
 - `/tests`: Test cases.
 - `/results`: Benchmarking results
@@ -58,6 +58,9 @@ This cargo project contains the ported utils.c code. To compile and generate the
 The dependency of icmp.c on utils.c has been replaced with utils_rust. The rust code was compiled into a dynamic shared library as explain in utils_rust. The file rust_functions.h contains extern definitions of rust functions, which are imported in icmp.c. 'rust_functions.c' is included in icmp.c and the makefile was edited to link the rust library. Makefile was updated to link the rust library during compilation of icmp.c.
 
 **shared library in linux has a .so extension and .dylib extension on mac. For running on linux/mac check the extension sign in Makefile for Rust_library.**
+
+### integration_examples
+Contains an example integration of Rust into C code. Explained in detail below.
 
 ## RUST and C Integration Pipeline
 This section explains the complete end-to-end integration pipelin of rust into c modules using FFI safe practices. This section eplains the complete procedure using the integration example in [`integration/integration_examples`](https://github.com/kumarakrishna/c-rust-integration/tree/c6fd00c157ab592c559dd5928c5a0c4b86febbbd/code_orig/integration_examples)
