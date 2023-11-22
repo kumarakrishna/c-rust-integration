@@ -32,7 +32,7 @@ We ported `utils.c` to Rust with a focus on providing conditional memory safety 
 
 - `/code-external`: Original Microps code
 - `/code_orig`: utils_rust, rust_functions.h, rust_queue_check
-- `/doc`: Milestone 1 ppt, project proposal, README, Errors_avoided.pdf.
+- `/doc`: Milestone 1 ppt, project proposal, README, Errors_avoided.txt.
 - `/tests`: Test cases.
 - `/results`: Benchmarking results
 - `/microps_integration`: microps_integrated, utils_rust
