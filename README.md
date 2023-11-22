@@ -178,20 +178,10 @@ Data types in Rust are more expressive and safe as compared to C data types, all
  
 Selecting improper data types initially led to a domino effect of errors across multiple file levels where each function calls another one and uses its result according to its type signature. Correcting these was possible after a more in depth study about rust, its data types, what it signifies and where its use cases primarily are 
  
-Line number 12 : using usize as a data type for the return type io::Result<usize> gives a compile time error.
+Line number 12 in microps_integration/utils_rust/src/utillib/mod.rs: using usize as a data type for the return type io::Result<usize> gives a compile time error.
 
 ### 2. Manipulating raw pointers, converting them to appropriate pointer types in Rust to utilize the Rust paradigm of ownership and borrowchecker to the fullest
-Data is passed from Rust.
-### 1. Uninitialized variables
-C let's the programmer compile code with uninitialized variables. It also lets uninitialized variables be passed as arguments to function calls, which can lead to null pointers or segmentation fault if the programmer is not careful
- 
-Rust does not allow the programmer to pass uninitialized variables as function calls, in Rust code as well over the foreign function interface, making the ported code safer with fewer chances of bugs and/or errors
- 
-### 2. Segmentation fault
-In C it is possible to access out of bounds indexes when using FFIs. RUST has compile time checks to prevent this from happening.  
- 
-When we declare an array of size n in C and try to access the n+1th index in RUST code which ideally should give a compile time error. But there is no compile time check and RUST accesses the memory location which results in runtime errors.
-When we declare an array of size n in RUST and try to access the n+1th index in C code which ideally should give a compile time error. But there is no compile time check and C accesses the memory location which results in runtime errorst to C using raw pointers which then need to be converted to data types in the Rust codebase to be used as variables. Rust provides multiple types of pointers, few common ones being
+Data is passed from Rust to C using raw pointers which then need to be converted to data types in the Rust codebase to be used as variables. Rust provides multiple types of pointers, few common ones being
 - Box<T>
 - Rc<T>
 - Arc<T>
