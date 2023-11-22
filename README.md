@@ -43,6 +43,7 @@ We ported `utils.c` to Rust with a focus on providing conditional memory safety 
 - Integration of utils_rust with microps_icmp - Kumarakrishna Valeti
 - Integration of Queue with test C code - Ashman Mehra
 - Benchmarking and testing - Joel Tony
+- README - Kumarakrishna Valeti, Ashman Mehra, Joel Tony
 
 ## RUST and C Integration Pipeline
 This section explains the complete end-to-end integration pipelin of rust into c modules using FFI safe practices. This section eplains the complete procedure using the integration example in [`integration/integration_examples`](https://github.com/kumarakrishna/c-rust-integration/tree/c6fd00c157ab592c559dd5928c5a0c4b86febbbd/code_orig/integration_examples)
