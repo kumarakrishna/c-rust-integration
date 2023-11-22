@@ -2,7 +2,6 @@ use std::io::{self, Write};
 use std::ffi::CStr;
 use std::os::raw::{c_char, c_void};
 use std::fs::File;
-// use std::ptr;
 
 #[no_mangle]
 pub extern "C" fn write_to_stderr(message: *const c_char) -> u32 {
@@ -99,5 +98,7 @@ pub extern "C" fn hexdump(fp: *mut c_void, data: *const u8, data_len: usize) -> 
         return libc::EFAULT;
     }
 
-    0
+    return 0;
+    
 }
+

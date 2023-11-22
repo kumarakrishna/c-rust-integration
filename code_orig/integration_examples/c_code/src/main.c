@@ -2,7 +2,8 @@
 #include "mylibrary.h"
 
 int main() {
-
+    
+    // write_to_std_err
     const char* message = "This is a message from C written by rust.";
     int result = write_to_stderr(message);
 
@@ -18,6 +19,7 @@ int main() {
         return 1;
     }
 
+    // hexdump
     const unsigned char data[] = "This is a test string for hexdump function.";
     size_t data_len = sizeof(data) - 1;
     result = hexdump(file, data, data_len);
@@ -27,6 +29,7 @@ int main() {
     } else {
         printf("hexdump completed successfully.\n");
     }
+
 
     return 0;
 }

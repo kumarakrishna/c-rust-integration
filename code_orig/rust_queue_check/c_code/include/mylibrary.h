@@ -19,8 +19,10 @@ struct queue_head {
     unsigned int num;
 };
 
-// uint32_t add(uint32_t, uint32_t);
-uint32_t write_to_stderr(const char* message);
-uint32_t hexdump(void* fp, const unsigned char* data, size_t data_len);
+void queue_init (struct queue_head *queue);
+struct queue_head* create_queue_head();
+void *queue_push(struct queue_head *queue, void *data);
+void *queue_pop(struct queue_head *queue);
+void *queue_peek(struct queue_head *queue);
 
 #endif
