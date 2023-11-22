@@ -47,7 +47,9 @@ We ported `utils.c` to Rust with a focus on providing conditional memory safety 
 - README - Kumarakrishna Valeti, Ashman Mehra, Joel Tony
 
 ### utils_rust
-
+This cargo project contains the ported utils.c code. To compile and generate the dynamic shared library run 'cargo build --release' in root of utils_rust. The share library should be generated as libutillib.dylib on mac under target/release.
+/src/utillib/mod.rs contains the ported utils.c code
+/cargo.toml specifies the dependencies and instruction to compile it as a dynamic library
 
 ### rust_queue_check
 
@@ -167,7 +169,7 @@ The build file can be found in [/ccode/build.sh](https://github.com/kumarakrishn
 
 ## POPL Aspects
 
-
+## Issues Faced
 
 ## Tests and Benchmarking
 
