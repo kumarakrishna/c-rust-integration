@@ -28,15 +28,16 @@ We chose Microps as a case study—a GitHub project offering an educational impl
 
 We ported `utils.c` to Rust with a focus on providing conditional memory safety guarantees by managing memory allocation and access in Rust.
 
-## Repo Structure
+### Repo Structure
 
+- `/code-external`: Original Microps code
+- `/code_orig`: utils_rust, rust_functions.h, rust_queue_check
 - `/doc`: Milestone 1 ppt, project proposal, README, Errors_avoided.pdf.
 - `/tests`: Test cases.
-- `/code_orig`: utils_rust cargo project , rust_functions.h, rust_queue_check
-- `/code-external`: Original Microps code.
-- `/results`: Benchmarking results.
+- `/results`: Benchmarking results
+- `/microps_integration`: microps_integrated, utils_rust
 
-## Distribution of Tasks
+### Distribution of Tasks
 
 - Porting of utils.c to Rust - Ashman Mehra, Kumarakrishna Valeti, Arnav Gupta
 - Identification of errors avoided - Arnav Gupta
@@ -44,6 +45,15 @@ We ported `utils.c` to Rust with a focus on providing conditional memory safety 
 - Integration of Queue with test C code - Ashman Mehra
 - Benchmarking and testing - Joel Tony
 - README - Kumarakrishna Valeti, Ashman Mehra, Joel Tony
+
+### utils_rust
+
+
+### rust_queue_check
+
+
+### microps_integration
+
 
 ## RUST and C Integration Pipeline
 This section explains the complete end-to-end integration pipelin of rust into c modules using FFI safe practices. This section eplains the complete procedure using the integration example in [`integration/integration_examples`](https://github.com/kumarakrishna/c-rust-integration/tree/c6fd00c157ab592c559dd5928c5a0c4b86febbbd/code_orig/integration_examples)
@@ -153,6 +163,11 @@ gcc src/main.c -Iinclude/ -L../rustcode/target/release -lutillib -o bin/myapp
 ```
 
 The build file can be found in [/ccode/build.sh](https://github.com/kumarakrishna/c-rust-integration/blob/c6fd00c157ab592c559dd5928c5a0c4b86febbbd/code_orig/integration_examples/ccode/build.sh) The `-L` flag is used to specify the location of the rustc compiled library and the `-l` specifies the library to be used in the location. We store the final integrated object file in the `bin` folder which can be run as `./app`
+
+
+## POPL Aspects
+
+
 
 ## Tests and Benchmarking
 
