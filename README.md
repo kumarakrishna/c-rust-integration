@@ -1,8 +1,8 @@
 # c-rust-integration
 
-**Group No. 1**
-
 ## Members
+
+### Group No. 1
 - Arnav Gupta (2021A7PS2092G)
 - Ashman Mehra (2021A7PS2508G)
 - Kumarakrishna Valeti (2021A7PS2617G)
