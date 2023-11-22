@@ -297,8 +297,12 @@ Porting C code to Rust project needs multiple modifications to lifetimes of vari
 "perf" in Linux is a powerful performance analysis tool that helps benchmark and optimize system and application performance. It provides insights into CPU usage, memory operations, and other critical metrics, enabling developers to identify bottlenecks and improve overall system efficiency. With features like profiling and tracing, "perf" is instrumental in fine-tuning software for optimal execution.
 @Joel
 
-- [@Joel]: Mention any relevant information about tests and benchmarking here.
+- [@Joel]:Pics
+  
+### Massif
+"Massif" is another tool in the Valgrind suite, specifically designed for heap profiling in C and C++ programs. It helps benchmark and optimize memory usage by providing a detailed analysis of heap allocations and deallocations. Massif aids developers in identifying memory-related bottlenecks, allowing for targeted optimizations to improve overall program efficiency.
 
+- [@Joel]:Pics
 
 ## Future Work
 
